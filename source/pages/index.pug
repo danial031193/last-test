@@ -1,0 +1,46 @@
+include components/mixins
+include components/doctype
+
+body
+    header.header
+        .container
+            .header__wrapper
+                .header__logo LOGO
+                .header__icon
+                menu.header__menu
+                    li.header__item Item
+                    li.header__item Item
+                    li.header__item Item
+                    li.header__item Item
+                    li.header__item Item
+
+    section.grid
+        .container
+            .grid__wrapper
+                .grid__item Item 1
+                .grid__item Item 2
+                .grid__item Item 3
+                .grid__item Item 4
+                .grid__item Item 5
+                .grid__item Item 6
+
+    .container
+        span.iconmoon.icon-data
+        span.iconmoon &#xe900;
+
+        a(href="#test") test link
+
+        form
+            input(type="input")
+            input(type="input" required)
+
+        section.sticky
+            .sticky__box
+                .sticky__left Test text
+                .sticky__right
+                    .sticky__item Sticky item
+
+
+        div#test test id
+
+    script(src="js/script.js")
