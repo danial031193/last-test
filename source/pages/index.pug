@@ -1,18 +1,11 @@
 include components/mixins
 include components/doctype
 
+mixin imagesMixinInFile(id, name)
+    img(src='img/' + id + '.' + name)
+
 body
-    header.header
-        .container
-            .header__wrapper
-                .header__logo LOGO
-                .header__icon
-                menu.header__menu
-                    li.header__item Item
-                    li.header__item Item
-                    li.header__item Item
-                    li.header__item Item
-                    li.header__item Item
+    include header
 
     section.grid
         .container
@@ -42,5 +35,76 @@ body
 
 
         div#test test id
+
+    br
+    br
+    br
+    br
+
+    .container
+        a.footer__phone(href="tel:" + contacts.tel) #{contacts.tel}
+        br
+
+        // Inline styles
+        a(style={ color: 'red', background: 'green' }) #{contacts.tel}
+
+        .test.test2.test3#id #{test.id}
+        .test #{test.text}
+        .test #{test.text}
+        .test #{test.text}
+
+        // Each example
+        .menu
+          each element in menu
+              a(href=element.link) #{element.label}
+
+        // Each example without cycle
+        .menu
+            a(href="#program") Программа
+            a(href="#teacher") Преподаватель
+            a(href="#price") Цена
+            a(href="#reviews") Отзывы
+            a(href="#questions") Вопросы
+
+        p
+            span span
+            | text
+
+        h1.title
+            | Курс FRONTEND /
+            br
+            | HTML верстальщик
+
+        p
+            span
+                | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                | Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                | when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                | It has survived not only five centuries, but also the leap into electronic typesetting,
+                | remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
+                | containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+                | PageMaker including versions of Lorem Ipsum.
+
+        +sectionTitle('ПРЕПОДАВАТЕЛЬ КУРСА')
+
+        .images.with-names
+          each i in images
+              img(src='img/' + i.id + '.' + i.name)
+
+        .images.with-names-mixin
+          each i in images
+              +imagesMixin(i.id, i.name)
+
+        .images.with-names-mixin
+          each i in images
+              +imagesMixinInFile(i.id, i.name)
+
+        .images.imagesWithScr
+          each item in imagesWithScr
+              img(src='img/' + item)
+
+        .images.imagesWithScr-mixin
+          each item in imagesWithScr
+              +firstMixin(item)
 
     script(src="js/script.js")
